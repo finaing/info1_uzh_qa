@@ -7,10 +7,8 @@ This repo contains two files:
 
 # How to run
 
-If the two files are in the same directory you can either run the code directly in your IDE or from the command line. It will print questions in the terminal and prompt you to answer with "True" or "False", casing does not matter. Here is an example:
+If the two files are in the same directory you can either run the code directly in your IDE or from the command line. 
 
-`Question: A function that raises an exception returns None.`\
-`Your answer (True/False): false`\
-`Correct!`
+Thanks to @Lunoastro, the code now has a GUI created with tkinter. Questions can be answered either with mouse press or with 1 or 2 and at the end it will present the user with a percentage showing how good they were.
 
 Please note that the code shuffles the questions for each run, but does not log the answers. 
