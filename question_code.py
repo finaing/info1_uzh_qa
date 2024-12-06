@@ -34,12 +34,12 @@ class QuizApp:
         self.button_frame.pack(pady=10)
 
         self.yes_button = tk.Button(
-            self.button_frame, text="Yes", font=self.default_font, command=self.yes_pressed
+            self.button_frame, text="True (1)", font=self.default_font, command=self.yes_pressed
         )
         self.yes_button.pack(side=tk.LEFT, padx=10)
 
         self.no_button = tk.Button(
-            self.button_frame, text="No", font=self.default_font, command=self.no_pressed
+            self.button_frame, text="False (2)", font=self.default_font, command=self.no_pressed
         )
         self.no_button.pack(side=tk.RIGHT, padx=10)
 
