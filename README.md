@@ -3,7 +3,7 @@
 This repo contains two files: 
 
 1) an xlsx file with all True/False questions from all available Info 1 midterms and final exams up until HS23, excluding the final exam of HS23.
-2) a Python code to print the questions in the terminal and prompt the user to answer.
+2) a Python code with a GUI to display one question at a time and log the answers.
 
 # How to run
 
