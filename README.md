@@ -11,4 +11,4 @@ If the two files are in the same directory you can either run the code directly 
 
 Thanks to @Lunoastro, the code now has a GUI created with tkinter. Questions can be answered either with mouse press or with 1 or 2 and at the end it will present the user with a percentage showing how good they were.
 
-Please note that the code shuffles the questions for each run, but does not log the answers. 
+Please note that the code shuffles the questions for each run. 
