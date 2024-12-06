@@ -7,8 +7,7 @@ def read_excel_file(file_path):
     return df
 
 def shuffle_questions(df):
-    duplicated_df = pd.concat([df, df]).reset_index(drop=True)
-    shuffled_df = duplicated_df.sample(frac=1).reset_index(drop=True)
+    shuffled_df = df.sample(frac=1).reset_index(drop=True)
     return shuffled_df
 
 class QuizApp:
@@ -20,25 +19,44 @@ class QuizApp:
         self.correct_answers = 0
         self.incorrect_answers = 0
 
-        self.question_label = tk.Label(master, text="", wraplength=400)
+        
+        self.master.geometry("500x300")  
+        self.default_font = ("Helvetica", 12)
+
+        
+        self.question_label = tk.Label(
+            master, text="", wraplength=400, font=self.default_font
+        )
         self.question_label.pack(pady=20)
 
-        self.yes_button = tk.Button(master, text="Yes", command=self.yes_pressed)
-        self.yes_button.pack(side=tk.LEFT, padx=20)
+        
+        self.button_frame = tk.Frame(master)
+        self.button_frame.pack(pady=10)
 
-        self.no_button = tk.Button(master, text="No", command=self.no_pressed)
-        self.no_button.pack(side=tk.RIGHT, padx=20)
+        self.yes_button = tk.Button(
+            self.button_frame, text="Yes", font=self.default_font, command=self.yes_pressed
+        )
+        self.yes_button.pack(side=tk.LEFT, padx=10)
+
+        self.no_button = tk.Button(
+            self.button_frame, text="No", font=self.default_font, command=self.no_pressed
+        )
+        self.no_button.pack(side=tk.RIGHT, padx=10)
 
         self.update_question()
 
-        # Allowes 1 and 2 be used instead of using the mouse
+        
         master.bind('1', lambda event: self.yes_pressed())
         master.bind('2', lambda event: self.no_pressed())
 
-        # STATS GUI
+        
         self.stats_window = tk.Toplevel(master)
         self.stats_window.title("Quiz Stats")
-        self.stats_label = tk.Label(self.stats_window, text="")
+        self.stats_window.geometry("300x150")
+
+        self.stats_label = tk.Label(
+            self.stats_window, text="", font=self.default_font
+        )
         self.stats_label.pack(pady=20)
         self.update_stats()
 
@@ -74,7 +92,11 @@ class QuizApp:
         self.stats_label.config(text=stats_text)
 
     def show_results(self):
-        correctness_rate = self.correct_answers / (self.correct_answers + self.incorrect_answers) * 100
+        total_questions = self.correct_answers + self.incorrect_answers
+        if total_questions > 0:
+            correctness_rate = self.correct_answers / total_questions * 100
+        else:
+            correctness_rate = 0
         messagebox.showinfo("Quiz Finished", f"You have a correctness rate of: {correctness_rate:.2f}%")
         self.master.quit()
 
